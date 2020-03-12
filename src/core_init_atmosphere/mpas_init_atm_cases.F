@@ -3009,7 +3009,8 @@ module init_atm_cases
 !    needed for nVertLevels equal or greater than 55.
          if (nVertLevels >= 55) then
             als   =  .075  ! 55 levels.
-            alt   = 1.70   ! 55 levels.
+            !alt   = 1.70   ! 55 levels.
+            alt   = 1.75   ! 55 levels.  -- modified for WRF/MPAS comparison
             zetal =  .75   ! 55 levels.
          else
             als   =  .075  ! 41 levels.
@@ -4498,7 +4499,7 @@ call mpas_log_write('Done with soil consistency check')
       if (allocated(maskslab)) deallocate(maskslab)
 
       ! Freeze really cold ocean
-      where (sst < 271.0 .and. landmask == 0) xice = 1.0
+!     where (sst < 271.0 .and. landmask == 0) xice = 1.0
 
       ! Limit XICE to values between 0 and 1. Although the input meteorological field is between 0.
       ! and 1., interpolation to the MPAS grid can yield values of XiCE less than 0. and greater
